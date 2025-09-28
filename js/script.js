@@ -78,7 +78,7 @@ const mainStage = new Stage("main-canvas");
 const stages = [trailsStage, mainStage];
 
 //随机文字烟花内容
-const randomWords = ["新年快乐", "心想事成"];
+const randomWords = ["生日快乐", "永远美丽","幸福"];
 const wordDotsMap = {};
 randomWords.forEach((word) => {
 	wordDotsMap[word] = MyMath.literalLattice(word, 3, "Gabriola,华文琥珀", "90px");
@@ -380,11 +380,7 @@ const appNodes = {
 	controls: ".controls",
 	menu: ".menu",
 	menuInnerWrap: ".menu__inner-wrap",
-	pauseBtn: ".pause-btn",
-	pauseBtnSVG: ".pause-btn use",
-	soundBtn: ".sound-btn",
-	soundBtnSVG: ".sound-btn use",
-	shellType: ".shell-type",
+		shellType: ".shell-type",
 	shellTypeLabel: ".shell-type-label",
 	shellSize: ".shell-size", //烟花大小
 	shellSizeLabel: ".shell-size-label",
@@ -429,12 +425,6 @@ if (!fullscreenEnabled()) {
 
 //第一次渲染是在状态机 init()中调用的
 function renderApp(state) {
-	const pauseBtnIcon = `#icon-${state.paused ? "play" : "pause"}`;
-	const soundBtnIcon = `#icon-sound-${soundEnabledSelector() ? "on" : "off"}`;
-	appNodes.pauseBtnSVG.setAttribute("href", pauseBtnIcon);
-	appNodes.pauseBtnSVG.setAttribute("xlink:href", pauseBtnIcon);
-	appNodes.soundBtnSVG.setAttribute("href", soundBtnIcon);
-	appNodes.soundBtnSVG.setAttribute("xlink:href", soundBtnIcon);
 	appNodes.controls.classList.toggle("hide", state.menuOpen || state.config.hideControls);
 	appNodes.canvasContainer.classList.toggle("blur", state.menuOpen);
 	appNodes.menu.classList.toggle("hide", !state.menuOpen);
